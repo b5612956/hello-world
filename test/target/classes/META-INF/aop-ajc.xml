@@ -1,0 +1,11 @@
+<aspectj>
+<aspects>
+<aspect name="com.test.panda.domain.Positions_Roo_Configurable"/>
+<aspect name="com.test.panda.domain.Positions_Roo_Jpa_Entity"/>
+<aspect name="com.test.panda.domain.web.ApplicationConversionServiceFactoryBean_Roo_ConversionService"/>
+<aspect name="com.test.panda.domain.Positions_Roo_ToString"/>
+<aspect name="com.test.panda.domain.Positions_Roo_Jpa_ActiveRecord"/>
+<aspect name="com.test.panda.domain.web.PositionsController_Roo_Controller"/>
+</aspects>
+</aspectj>
+
