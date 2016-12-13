@@ -4,6 +4,7 @@
 package com.test.panda.domain.web;
 
 import com.test.panda.domain.Positions;
+import com.test.panda.domain.SelectCandidate;
 import com.test.panda.domain.web.ApplicationConversionServiceFactoryBean;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.core.convert.converter.Converter;
@@ -37,10 +38,37 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         };
     }
     
+    public Converter<SelectCandidate, String> ApplicationConversionServiceFactoryBean.getSelectCandidateToStringConverter() {
+        return new org.springframework.core.convert.converter.Converter<com.test.panda.domain.SelectCandidate, java.lang.String>() {
+            public String convert(SelectCandidate selectCandidate) {
+                return "(no displayable fields)";
+            }
+        };
+    }
+    
+    public Converter<Long, SelectCandidate> ApplicationConversionServiceFactoryBean.getIdToSelectCandidateConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.Long, com.test.panda.domain.SelectCandidate>() {
+            public com.test.panda.domain.SelectCandidate convert(java.lang.Long id) {
+                return SelectCandidate.findSelectCandidate(id);
+            }
+        };
+    }
+    
+    public Converter<String, SelectCandidate> ApplicationConversionServiceFactoryBean.getStringToSelectCandidateConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.String, com.test.panda.domain.SelectCandidate>() {
+            public com.test.panda.domain.SelectCandidate convert(String id) {
+                return getObject().convert(getObject().convert(id, Long.class), SelectCandidate.class);
+            }
+        };
+    }
+    
     public void ApplicationConversionServiceFactoryBean.installLabelConverters(FormatterRegistry registry) {
         registry.addConverter(getPositionsToStringConverter());
         registry.addConverter(getIdToPositionsConverter());
         registry.addConverter(getStringToPositionsConverter());
+        registry.addConverter(getSelectCandidateToStringConverter());
+        registry.addConverter(getIdToSelectCandidateConverter());
+        registry.addConverter(getStringToSelectCandidateConverter());
     }
     
     public void ApplicationConversionServiceFactoryBean.afterPropertiesSet() {
