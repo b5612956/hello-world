@@ -6,3 +6,9 @@ web mvc setup
 web mvc all --package com.test.panda.domain.web
 exit
 // Spring Roo 1.3.2.RELEASE [rev 8387857] log closed at 2559-12-12 23:52:53
+// Spring Roo 1.3.2.RELEASE [rev 8387857] log opened at 2559-12-13 16:54:31
+// [failed] entity jpa --class ~.domain.Select
+entity jpa --class ~.domain.SelectCandidate
+web mvc all --package com.test.panda.domain.web
+exit
+// Spring Roo 1.3.2.RELEASE [rev 8387857] log closed at 2559-12-13 16:55:23
